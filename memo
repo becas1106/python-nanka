@@ -40,5 +40,48 @@ importでも上から順番に実行されちゃうのでコンストとかで�
     dict
         {'hoge': 'ほげ', 'huga': 'ふが'}
 
+Django関連
+    Djangoのプロジェクト作成
+        django-admin startproject プロジェクト名
+
     
-    てすと
+    サーバー関連
+        manage.pyを動かして色々やる
+        サーバー起動
+            python manage.py runserver
+            デフォルトはhttp://localhost:8000/
+            管理者用ページhttp://localhost:8000/admin/
+        管理者ユーザーの作成
+            python manage.py createsuperuser
+            Windows環境でGitBashとかつかってるとwinptyなんかを使う必要あった
+        migrate
+            python manage.py migrate
+    アプリケーション
+        アプリケーションの作成
+            python manage.py startapp アプリ名
+        アプリケーションの追加
+            settings.pyのINSTALLED_APPSに↑で追加したアプリ名を追記
+    
+     
+    Model Template View
+        MVCみたいな感じ？学習中
+
+    Model
+        モデルの追加方法
+            models.pyに追記
+                class Modelname(models.Model):
+                    field = models.CharField(max_length=100)
+                    フィールドいろいろ
+            admin.pyに↑で追加したモデルを追記
+                from .models import Modelname
+                admin.site.register(Modelname)
+            migrate
+                python manage.py check
+                python manage.py makemigrations アプリ名
+                python manage.py migrate
+
+
+
+
+
+     
