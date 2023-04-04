@@ -40,6 +40,23 @@ importでも上から順番に実行されちゃうのでコンストとかで�
     dict
         {'hoge': 'ほげ', 'huga': 'ふが'}
 
+
+アンスコ何者
+    色んなとこで使いまくってて色んな意味あるっぽい、見かけるたびに調べてく
+        末尾のやつ
+            モジュール名.__name__はimportすると勝手にモジュール名が入る
+            で、コマンドラインから実行すると__main__が入るからどこから呼ばれたか判別できるということみたい
+            __main__.pyを作ったらいけない！
+        戻り値複数あるとき
+            x,_,y = 3つ返す関数
+            とすると、2つめの戻り値を即座に破棄する。
+
+        数字のカンマがわり
+            1_000
+            で1000って数値としてちゃんと扱われる
+    
+
+
 Django関連
     Djangoのプロジェクト作成
         django-admin startproject プロジェクト名
@@ -61,6 +78,44 @@ Django関連
             python manage.py startapp アプリ名
         アプリケーションの追加
             settings.pyのINSTALLED_APPSに↑で追加したアプリ名を追記
+
+
+
+    DB
+        対話モードで操作 GitBashで操作すると色々エラー出ちゃうので普通にVSCodeでやる
+            python manage.py shell
+            from アプリ名.models import モデル名
+            ↑の続きで操作する
+                insert(create)
+                    モデル名.objects.create(カラム名=値)
+                        値がIntegerのときに''をつけたりするとよくわからんエラーになる
+                        コレクションなので[]で例によって好きな範囲で取得もできる
+                select系
+                    条件付きでAND条件を付ける場合は,、ORは|らしいが何かしらimport必要っぽい
+                    全件取得
+                        モデル名.objects.all()
+                    絞り込み
+                        モデル名.objects.all().filter(条件)
+                        完全一致
+                            条件に カラム名=値
+                        部分一致
+                            条件に　
+                        数値比較
+                            条件に　カラム名__xx=数値
+                            xxはgtやlt。以上以下はgteとlteのようにeを末尾に。
+                update
+                対象を取得してカラムを指定して更新　らしいが、どうしてもupsert扱いになってしまうので調査中
+                ↑PKに対して値を更新するとupsertになっちゃうっぽい？普通はPKの値を変更することはないだろうからupdateとして使えるか
+                取ってきた行をオブジェクトとして変換している時点で参照が切れてるイメージかな？
+                    x = モデル名.objects.get(条件)
+                    x.カラム名 = 値
+                    x.save()
+                upsert
+                    Test.objects.update_or_create(カラム名=値)
+                    
+                    
+
+
     
      
     Model Template View
@@ -69,16 +124,21 @@ Django関連
     Model
         モデルの追加方法
             models.pyに追記
-                class Modelname(models.Model):
+                class モデル名(models.Model):
                     field = models.CharField(max_length=100)
                     フィールドいろいろ
             admin.pyに↑で追加したモデルを追記
-                from .models import Modelname
-                admin.site.register(Modelname)
-            migrate
+                from .models import モデル名
+                admin.site.register(モデル名)
+            モデルに変更をしたらmigrateする
                 python manage.py check
+                エラーが出なかったらマイグレーション
                 python manage.py makemigrations アプリ名
                 python manage.py migrate
+                バッチ化しようとしたけど各操作のあとのチェック処理とかめんどくさくなったから手に馴染ませていく
+                やることはmakemigrations appnameとmigrateだけ!!!!
+            
+
 
 
 

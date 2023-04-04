@@ -23,7 +23,8 @@ for i in range(1, 10, 2):
 
 
 # if
-inp = int(input())
+# inp = int(input())
+inp = 3
 
 if (inp % 2) == 1:
     type = ('kisu','')
@@ -33,3 +34,11 @@ else:
     type = ('gusu','small')
 
 print('{}は{}です。{}'.format(inp, type[0], type[1]))
+
+
+# iroiro
+n = 1_000_000
+print(n * 3)
+
+import collections_test
+print(collections_test.__name__)
