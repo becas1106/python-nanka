@@ -42,3 +42,19 @@ print(n * 3)
 
 import collections_test
 print(collections_test.__name__)
+
+
+
+
+
+
+from pathlib import Path
+import os
+# このファイルを格納しているフォルダから引数に渡した先に移動したときの絶対パス
+print(os.path.abspath("../"))
+
+# このファイルの絶対パス
+print(Path(__file__).resolve())
+
+# パスの結合
+print(os.path.join(Path(__file__).resolve().parent, 'project', 'templates'))
