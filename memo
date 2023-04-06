@@ -168,10 +168,32 @@ Django関連
                 バッチ化しようとしたけど各操作のあとのチェック処理とかめんどくさくなったから手に馴染ませていく
                 やることはmakemigrations appnameとmigrateだけ!!!!
             
+    Template
+        テンプレートタグ
+            {% いろいろ %}
+            みたいな表記のやつ
+            CSRF対策 formの下に
+                {% csrf_token %}
+            URL
+                {% url 'app_name:name' %}
+            イテラルオブジェクト
+                {% for x in イテラルオブジェクト %}
+                    {{x.フィールド名とか}}
+                {% endfor %}
+            context タグ名で囲んだインプットフォーム
+                {{ キー.as_タグ名 }}
+            staticフォルダ(settings.py STATIC_URLやSTATICFILES_DIRSで定義する)以下を参照するとき
+                {% load static %}
+                {% static 'パス' %}
+
+    Session管理
+        settings.pyでINSTALLED_APPSにdjango.contrib.sessions、
+        MIDDLEWAREにdjango.contrib.sessions.middleware.SessionMiddlewareがなければ追記
+        格納場所はSESSION_ENGINE='django.contrib.sessions.backends.対象'で指定。未設定ではデータベース
+        db,file,cacheなど。ファイルの場合、保存場所を指定するのはSESSION_FILE_PATH = 'パス'で。
 
 
 
 
 
-
-     
+    

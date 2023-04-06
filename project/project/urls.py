@@ -21,5 +21,5 @@ urlpatterns = [
     path('test/', include('testApp.urls')),
     path('admin/', admin.site.urls),
     # TODO:上記以外を指定した場合にリダイレクトみたいなやつ パス指定の問題？
-    path('*', views.redirect_login),
+    # path('*', views.redirect_login),
 ]
