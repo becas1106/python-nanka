@@ -1,0 +1,21 @@
+input {
+    height: 40px;
+}
+
+button {
+    width: 120px;
+    height: 40px;
+}
+
+a.button {
+    width: 120px;
+    height: 40px;
+    background: rgb(239,239,239);
+    border: 1px solid black;
+    
+    box-sizing: border-box;
+    display: inline-block;
+    color: black;
+    text-align: center;
+    line-height: 40px;
+}

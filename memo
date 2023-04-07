@@ -136,8 +136,10 @@ Django関連
                     x.save()
                 upsert
                     Test.objects.update_or_create(カラム名=値)
-                    
-                    
+        DB初期化
+            migrationsのnnnn_~.pyをすべて削除
+            db.sqlite3を削除
+            マイグレーション
 
 
     
@@ -192,8 +194,20 @@ Django関連
         格納場所はSESSION_ENGINE='django.contrib.sessions.backends.対象'で指定。未設定ではデータベース
         db,file,cacheなど。ファイルの場合、保存場所を指定するのはSESSION_FILE_PATH = 'パス'で。
 
+    Form
+        django.forms.Form
+            class Form名(forms.Form):
+                フィールド名 = forms.フォーム種類(オプション=値,...)
+                
+            django.forms.ModelForm
+                class Form名(forms.ModelForm):
+                    モデル外のフィールドはここに入れればいける？ = forms.フォーム種類(オプション=値,...)
+                    class Meta:
+                        model = 対象のモデルclass
+                        fields = ['フィールドで表示したいカラム',...]
+                        # templateで表示するときにカラム名と違う値で表示したい場合
+                        labels = {
+                            'フィールドで表示したいカラム': '表示したいラベル',...
+                        }
 
 
-
-
-    

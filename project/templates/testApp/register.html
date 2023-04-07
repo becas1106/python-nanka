@@ -3,12 +3,15 @@
 <head>
   <meta charset="utf-8">
   <title>ユーザー登録</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/common.css' %}"/>
+  <link rel="stylesheet" href="{% static 'css/register.css' %}"/>
 </head>
 <body>
   <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <a id="cancel" href="{% url 'testApp:index' %}">キャンセル</a>
+    <a id="cancel" class="button" href="{% url 'testApp:index' %}">キャンセル</a>
     <button id="register" type="submit">登録</button>
   </form>
 </body>

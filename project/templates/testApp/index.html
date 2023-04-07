@@ -4,13 +4,20 @@
   <meta charset="utf-8">
   <title>ログインページ</title>
   {% load static %}
+  <link rel="stylesheet" href="{% static 'css/common.css' %}"/>
   <link rel="stylesheet" href="{% static 'css/index.css' %}"/>
 </head>
 <body>
   <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">ログイン</button>
+    <div>
+      <div>
+        {{ form.as_p }}
+      </div>
+        <button class="" type="submit">ログイン</button>
+    </div>
+    
+    
   </form>
   <a href="{% url 'testApp:register' %}">新規登録</a>
 </body>
